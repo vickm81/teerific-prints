@@ -1,0 +1,41 @@
+    {%extends 'admin_base.html'%}
+    {% block content %}
+    <br><br>
+    <div id="admin" class="container">
+        <a href="{{ url_for('add_product') }}"><i class="fa-solid fa-plus fa-xl cursor" style="color: #8f8d96;" href="{{ url_for('add_product') }}"></i></a>
+        <br><br>
+        <table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Image URL</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td><img src="{{ product.image_url }}" alt="{{ product.name }}" width="50"></td>
+            <td>
+                <button href="{{ url_for('edit_product', product_id=product.id) }}" class="btn btn-warning">Edit</button>
+                <a href="{{ url_for('delete_product', product_id=product.id) }}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+</div>
+{% endblock %}

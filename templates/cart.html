@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{%block content%}
+<br><br>
+<h3><b>Your Cart</b></h3>
+<div class="container">
+    {% for item in cart%}
+<div class="row border-bottom padder">
+  <div class="col-4">
+      <img class="img-thumbnail round" src="{{ url_for('static', filename='uploads/' ~ item.image) }}" style="width:100%" loading="lazy">
+  </div>
+  <div class="col-5">
+    <p><b>{{item.name}}</b></p>
+    <p class="qty"><b>Qty {{item.quantity}}</b></p>
+    <p><b>ksh {{item.price}}</b></P>
+    <p><b>size:</b>{{item.size}}</p>
+    <form id="postForm" action="{{ url_for('remove_from_cart', product_id=item.product_id, size=item.size, color=item.color) }}" method="POST" style="display:none;">
+  </form>
+  
+    <a href="#" onclick="document.getElementById('postForm').submit(); return false;" ><b class="remove">Remove</b></a>
+  </div>
+
+</div>
+<br>
+{% endfor %}
+<p><b>Total: ksh{{total_cost}}</b></p>
+<form id="checkout" action="{{url_for('checkout')}}" method="POST" style="display:none;">
+</form>
+<a href="#" onclick="document.getElementById('checkout').submit(); return false;" ><button class="btn butt">Checkout</button>
+</a>
+</div>
+{%endblock%}

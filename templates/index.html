@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{%block content%}
+    <br><br>
+    <div class="row">
+        {% for product in products %}
+        <div class="column2 col-md-5 product" data-product-id="{{ product.id }}">     
+                <div class="image-container">
+                        <img src="{{ url_for('static', filename='uploads/' ~ product.images[0].image_filename) }}" class="round" style="width: 80%;" alt="{{ product.name }}" loading="lazy">
+                        <div class="cursor padder round ">
+                            <br>
+                            <h6><b>{{ product.name }}</b></h6>
+                            <b>ksh{{ product.price }}</b>
+                        </div>
+                    </div>
+        </div>
+        {% endfor %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var tweeetElements = document.querySelectorAll(".product");
+        
+                tweeetElements.forEach(function(element) {
+                    element.addEventListener("click", function() {
+                        var productId = element.getAttribute("data-product-id");
+        
+                        var url = "{{url_for('product',product_id=0)}}".replace("0", productId);
+        
+                        window.location.href = url;
+                    });
+                });
+            });
+        </script>
+        
+    </div>
+{%endblock%}

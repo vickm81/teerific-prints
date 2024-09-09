@@ -1,0 +1,265 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+.center-text {
+  text-align: center; /* Centers text horizontally */
+}
+
+
+footer {
+    background-color: #343a40; 
+    color: #ffffff; 
+}
+
+footer a {
+    color: #ffffff; 
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer h5 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+
+.container {
+  position: relative;
+}
+
+.round {
+  border-radius: 30px;
+}
+
+
+/* Hide the images by default */
+.mySlides {
+  display: initial;
+}
+
+.footerbg{
+  padding-bottom: 20px;
+}
+
+.remove{
+  color:red;
+}
+
+.cart{
+  color: black;
+}
+
+.butt{
+  background-color:#DED0B6;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color:blue;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.padder{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(252, 251, 250, 0.8);
+}
+
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.column2 {
+  padding-top: 10px;
+  float: left;
+  width: 50%;
+}
+
+.qty{
+  color: darkgray;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.cent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 10px #999;
+  z-index: 1000;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.whatsapp-icon {
+  margin-top: 15px;
+}
+
+/* Hover effect */
+.whatsapp-float:hover {
+  background-color: #128C7E; /* Darker green on hover */
+  color: #fff;
+  text-decoration: none;
+}
+
+#preloader{
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 100;
+  align-items: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid khaki;
+  top: 50%;
+  left: 50%;
+  animation: loader 2s infinite ease;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: khaki;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  25% {
+    transform: rotate(180deg);
+  }
+  
+  50% {
+    transform: rotate(180deg);
+  }
+  
+  75% {
+    transform: rotate(360deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+  
+  25% {
+    height: 0%;
+  }
+  
+  50% {
+    height: 100%;
+  }
+  
+  75% {
+    height: 100%;
+  }
+  
+  100% {
+    height: 0%;
+  }
+}
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1; 
+}
+main {
+  flex-grow: 1;
+  padding: 10px;
+}

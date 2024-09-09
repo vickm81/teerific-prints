@@ -1,0 +1,126 @@
+{%extends 'base.html'%}
+{%block content%}
+<br><br>
+<style>
+  .mySlides {
+  display: none;
+  }
+</style>
+<div class="row">
+    <div class="col-md-6">
+        <div class="container">
+
+            <div class="mySlides">
+                <img src="{{ url_for('static', filename='uploads/' ~ product.images[0].image_filename) }}" class="round" style="width:90%" loading="lazy">
+            </div>
+          
+            <div class="mySlides">
+                <img src="{{ url_for('static', filename='uploads/' ~ product.images[1].image_filename) }}" class="round" style="width:90%" loading="lazy">
+            </div>
+          
+            <div class="mySlides">
+                <img src="{{ url_for('static', filename='uploads/' ~ product.images[2].image_filename) }}" class="round" style="width:90%" loading="lazy">
+            </div>
+          
+          
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+              
+            </div>
+          </div>
+    
+
+    <!-- Product Details and Selection Form -->
+    <div class="col-md-6">
+        <h5><b>{{ product.name }}</b></h5>
+        <p>{{ product.description }}</p>
+        <h5><b>ksh{{ product.price }}</b></h5>
+        <br>
+        <!-- Form for selecting size and quantity -->
+        <form method="post" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+          <div class="form-group col-md-8">
+            <label for="color"><b>Color</b></label>
+            <select id="color" name="color" class="form-control" required>
+                <option value="White">White</option>
+                <option value="Black">Black</option>
+                <option value="Grey">Light Grey</option>
+                <option value="Maroon">Maroon</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Mustard">Mustard</option>
+                <option value="Sky Blue">Sky Blue</option>
+                <option value="Royal Blue">Royal Blue</option>
+                <option value="Light Green">Light Green</option>
+                <option value="Dark Green">Dark Green</option>
+                <option value="Nude">Nude</option>
+            </select>
+        </div>  
+          <div class="form-group col-md-8">
+                <label for="size"><b>Adult Sizes</b></label>
+                <select id="size" name="size" class="form-control">
+                   <option selected></option>
+                    <option value="Small">Small</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Large">Large</option>
+                    <option value="XL">XL</option>
+                    <option value="2XL">2XL</option>
+                </select>
+                <b>
+                <label for="size_kids"><b>Kids Sizes</b></label>  
+                <select name="size_kids" id="size_kids" class="form-control">
+                  <option selected></option>
+                  <option value="1 year">1 yr</option>
+                  <option value="2 years">2 yrs</option>
+                  <option value="3 years">3 yrs</option>
+                  <option value="4 years">4 yrs</option>
+                  <option value="5 years">5 yrs</option>
+                  <option value="6 years">6 yrs</option>
+                  <option value="7 years">7 yrs</option>
+                  <option value="8 years">8 yrs</option>
+                  <option value="9 years">9 yrs</option>
+                  <option value="10 years">10 yrs</option>
+                  <option value="11years">11 yrs</option>
+                  <option value="12 years">12 yrs</option>
+
+                </select>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="quantity"><b>Quantity</b></label>
+                <input type="number" id="quantity" name="quantity" class="form-control" value="1" min="1" required>
+            </div>
+            &nbsp;&nbsp;<button type="submit" class="btn butt">Add to Cart</button>
+        </form>
+    </div>
+</div>
+
+<script>
+  let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("demo");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+{%endblock%}
